@@ -522,6 +522,8 @@ The medallion pattern is only useful if each layer has a *contract* — a statem
 
 The decision rule is a ladder, applied in order: **use the most managed option that meets the requirement, and drop a rung only when it does not.** Dropping a rung buys control and costs engineering time forever after.
 
+> **Counting convention.** §3 counts **12 source systems**; the table below has **13 rows** because POS is one system estate served by two mechanisms (Auto Loader for EU and APAC, Kafka for the Americas). Marketing and third-party data likewise each carry two mechanisms within a single row. Count systems in §3, count feeds here.
+
 1. **Managed connector (Lakeflow Connect)** — a source with a supported connector and no unusual requirement.
 2. **Lakeflow Declarative Pipelines over Auto Loader / COPY INTO** — files arriving in object storage.
 3. **Structured Streaming** — message buses, or anything needing sub-minute latency or custom stateful logic.
@@ -959,7 +961,7 @@ This is where the programme either succeeds or becomes permanent. Discipline is 
 
 The same five gates apply to the Hadoop cluster, assessed separately.
 
-**Dual-run cost is a named, budgeted line item**, not an overrun. Running both platforms for 24 weeks is expensive and entirely predictable; §10.4 carries it explicitly. The failure mode here is not the cost — it is a dual-run with no end date, which is why G1–G5 are dated and owned.
+**Dual-run cost is a named, budgeted line item**, not an overrun. Both platforms run in parallel from the first migrated measure in **week 41** until legacy consumption reaches zero at **week 88** — a 47-week overlap, of which weeks 41–64 also carry the build and daily operation of automated reconciliation (§8.5). That is expensive and entirely predictable; §10.4 carries it explicitly. The failure mode here is not the cost — it is a dual-run with no end date, which is why G1–G5 are dated and owned.
 
 ### 8.7 What the client must provide
 
@@ -1223,7 +1225,7 @@ Two panels. The executive panel measures whether the business changed. The platf
 | Loyalty-attributed sales share | 44% | 48% (end Yr 3) | POS loyalty capture rate |
 | Supplier OTIF | 87.4% | 92% (end Yr 3) | Scorecard, shared with suppliers, so the number is agreed rather than argued |
 | Cold-chain excursion write-off | Baseline in Phase 2 | -30% | Quality system, linked to sensor evidence |
-| Active reports in use | ~620 of 2,900 | ~400 certified products, 2,900 retired | Catalogue and usage telemetry. **Fewer is the target** |
+| Active reports in use | ~620 actively used, of ~2,900 registered | ~400 certified data products; all 2,900 legacy reports retired | Catalogue and usage telemetry. **Fewer is the target** — the 2,900 are replaced by the 400, not added to |
 | Time from question to answer (new analysis) | Median 11 months (backlog age) | Median under 5 working days for self-service; under 6 weeks for a new product | Request tracking |
 
 ### 12.2 Platform SLOs
@@ -1320,7 +1322,7 @@ Every assumption below is illustrative, is load-bearing somewhere, and must be t
 | A17 | Works-council consultation gates worker-level HR data in 5+ countries | §3.10, scope | Phase 0 | People domain resequences |
 | A18 | ~1,200 suppliers can consume a data share, with a thin UI for the smallest | D-14 | Phase 2 pilot (20 suppliers) | A light portal becomes a funded workstream |
 | A19 | 12–16 of the existing 48-person team can transition into platform roles | Handover, §9.3 | Phase 2 | Handover slips; either hire or extend the services engagement |
-| A20 | Dual-run window is 24 weeks, ending at week 88 | Cost peak, §10.4 | Phase 3 | Every additional quarter of dual-run is a material, visible cost |
+| A20 | Dual-run overlap runs weeks 41–88 (47 weeks); Phase 4 itself is 24 weeks | Cost peak, §10.4 | Phase 3 | Every additional quarter of dual-run is a material, visible cost |
 | A21 | Inventory ~$3.4bn, carrying cost ~18%, gross margin ~28%, markdown ~5.6% of revenue | Value case arithmetic | Phase 0 (Finance) | Benefit ranges scale directly |
 | A22 | Benefit capture at 60% of the identified low case, delayed two quarters | §10.6 payback | Continuously | Payback moves, but remains inside Year 2 down to roughly 40% capture |
 
