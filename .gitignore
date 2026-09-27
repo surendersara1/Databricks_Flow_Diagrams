@@ -1,0 +1,5 @@
+# local scratch
+*.tmp
+tmp_*/
+.DS_Store
+Thumbs.db
