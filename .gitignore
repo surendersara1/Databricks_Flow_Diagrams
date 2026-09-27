@@ -3,3 +3,7 @@
 tmp_*/
 .DS_Store
 Thumbs.db
+
+# build pipeline intermediates
+pdf/_work/
+build/__pycache__/
